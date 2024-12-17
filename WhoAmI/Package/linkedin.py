@@ -1,8 +1,12 @@
 import os
 import requests
 from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv()
+current_dir = Path(__file__).resolve().parent
+dotenv_path = current_dir.parent / '.env'
+
+load_dotenv(dotenv_path)
 
 nubela_api_key = os.getenv('NUBELA_API_KEY')
 
