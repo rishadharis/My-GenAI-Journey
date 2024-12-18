@@ -1,14 +1,16 @@
-import os
+# import os
 import requests
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from pathlib import Path
+from streamlit import secrets
 
 current_dir = Path(__file__).resolve().parent
 dotenv_path = current_dir.parent / '.env'
 
-load_dotenv(dotenv_path)
+# load_dotenv(dotenv_path)
 
-nubela_api_key = os.getenv('NUBELA_API_KEY')
+# nubela_api_key = os.getenv('NUBELA_API_KEY')
+nubela_api_key = secrets["NUBELA_API_KEY"]
 
 def scrape_linkedin_profile(linkedin_profile_url: str = None, mock: bool = False):
     if mock:
@@ -22,11 +24,11 @@ def scrape_linkedin_profile(linkedin_profile_url: str = None, mock: bool = False
         api_url = 'https://nubela.co/proxycurl/api/v2/linkedin'
         params = {
             'linkedin_profile_url': linkedin_profile_url,
-            'extra': 'include',
-            'github_profile_id': 'include',
-            'personal_contact_number': 'include',
-            'personal_email': 'include',
-            'inferred_salary': 'include',
+            'extra': 'exclude',
+            'github_profile_id': 'exclude',
+            'personal_contact_number': 'exclude',
+            'personal_email': 'exclude',
+            'inferred_salary': 'exclude',
             'skills': 'include',
             'use_cache': 'if-recent',
             'fallback_to_cache': 'on-error',

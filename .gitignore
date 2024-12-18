@@ -125,6 +125,7 @@ celerybeat.pid
 env/
 venv/
 ENV/
+secrets.toml
 env.bak/
 venv.bak/
 
